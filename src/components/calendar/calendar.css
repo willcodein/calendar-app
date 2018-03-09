@@ -1,0 +1,9 @@
+.calendar__date {
+  display: inline-block;
+  width: 14.29%;
+  float: left;
+}
+
+.calendar__date-container {
+
+}
