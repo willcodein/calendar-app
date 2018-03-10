@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+.calendar__date.active {
+    background: green;
+}
+
 .calendar__date-container {
   font-size: 0;
 }

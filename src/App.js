@@ -11,13 +11,16 @@ export default class App extends Component {
     this.state = {
       date: Moment(),
       year: Moment().format('YYYY'),
-      month: Moment().format('MMMM')
+      month: Moment().format('MM'),
+      day: Moment().format('D')
     }
-    this.handleData = this.handleData.bind(this);
+    this.handleYear = this.handleYear.bind(this);
   }
-  handleData(dateChange) {
+  handleYear(yearChange) {
+    console.log(Moment([yearChange, this.state.month, this.state.day]).format('YYYY'));
     this.setState({
-      year: dateChange
+      date: Moment([yearChange, this.state.month, this.state.day]),
+      year: yearChange
     })
   }
   render() {
@@ -27,7 +30,7 @@ export default class App extends Component {
           <h1 className="App-title">Pick a date.</h1>
         </header>
         <Month month={ this.state.month }/>
-        <Year year={ this.state.date }  handlerFromParent={this.handleData}/>
+        <Year date={ this.state.date }  handlerFromParent={ this.handleYear }/>
         <Calendar date={ this.state.date }/>
       </div>
     );

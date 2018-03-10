@@ -6,10 +6,7 @@ export default class Calendar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: this.props.date,
-      year: this.props.date.format("YYYY"),
-      month: this.props.date.format("MM"),
-      day: this.props.date.format("dd"),
+      day: this.props.date.format("D"),
       daysInMonth: Moment().daysInMonth(this.props.date),
       underflows: this.getOverflowDates(this.props.date, 'under'),
       overflows: this.getOverflowDates(this.props.date, 'over')
@@ -45,7 +42,7 @@ export default class Calendar extends Component {
     })
     for (let i = 1; i <= this.state.daysInMonth; i++) {
       days.push(
-        <span className="calendar__date" key={i}> {i} </span>
+        <span className={"calendar__date  " + (this.state.day == i ? 'active' : null)} key={i}>{i}</span>
       )
     }
     this.state.overflows.map((day, index) => {
@@ -53,7 +50,6 @@ export default class Calendar extends Component {
         <span className="calendar__date  calendar__date--overflow" key={index + 2.0000001}> {day} </span>
       )
     })
-    // console.log(Moment([this.state.date]).month(1).format("YYYY-MM-DD"))
     return (
       <div className="calendar__date-container">
         { days }
