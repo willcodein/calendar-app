@@ -1,9 +1,22 @@
 .calendar__date {
   display: inline-block;
-  width: 14.29%;
-  float: left;
+  width: 14.28%;
+  border: 1px solid red;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.calendar__date:hover {
+  background: red;
+  cursor: pointer;
 }
 
 .calendar__date-container {
+  font-size: 0;
+}
 
+.calendar__date--overflow {
+  background: blue;
 }
