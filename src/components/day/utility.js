@@ -1,18 +1,17 @@
 import Moment from 'moment';
 
 export function getOverflowDates(date, underOver) {
-  if (date.format('dddd') === 'Monday') return false;
   let mutableDate = date.clone();
   let overflow = [];
   switch(underOver) {
-    case 'under':
+    case "under":
       let yesterday = Moment(mutableDate.startOf('month')).subtract(1, 'days');
-      while (yesterday.format('dddd') !== 'Monday') {
+      while (yesterday.format('dddd') !== 'Sunday') {
         overflow.push(yesterday.format('D'));
         yesterday = Moment(yesterday).subtract(1, 'days');
       }
       break;
-    case 'over':
+    case "over":
       let tomorrow = Moment(mutableDate.endOf('month')).add(1, 'days');
       while (tomorrow.format('dddd') !== 'Monday') {
         overflow.push(tomorrow.format('D'));

@@ -11,12 +11,13 @@ export default class App extends Component {
     this.state = {
       date: Moment(),
       year: Moment().format('YYYY'),
-      month: Moment().format('M'),
+      month: Moment().format('M') -1,
       day: Moment().format('D')
     }
     this.handleYear = this.handleYear.bind(this);
     this.handleMonth = this.handleMonth.bind(this);
     this.monthIncrement = this.monthIncrement.bind(this);
+    this.handleDay = this.handleDay.bind(this);
   }
   handleYear(yearChange) {
     this.setState({
@@ -31,23 +32,43 @@ export default class App extends Component {
     })
   }
   monthIncrement(e) {
-    var newMonth;
+    var newMonth, newYear;
     switch(e) {
       case -1:
         newMonth = (Number(this.state.month) + e === -1 ? 11 : Number(this.state.month) + e)
+        newYear = newMonth === 11 ? -1 : 0;
         break;
       case 1:
         newMonth = (Number(this.state.month) + e === 12 ? 0 : Number(this.state.month) + e)
+        newYear = newMonth === 0 ? 1 : 0;
         break;
     }
     this.setState({
-      month: newMonth
+      date: Moment([Number(this.state.year) + newYear, newMonth, this.state.day]),
+      month: newMonth,
+      year: Number(this.state.year) + newYear
     })
   }
-  handleDay(dayChange) {
+  handleDay(dayChange, monthChange = 0) {
+    console.log(dayChange, monthChange);
+    var newMonth;
+    var newYear = 0;
+    switch(monthChange) {
+      case -1:
+        newMonth = (Number(this.state.month) + monthChange === -1 ? 11 : Number(this.state.month) + monthChange)
+        newYear = newMonth === 11 ? -1 : 0;
+        break;
+      case 1:
+        newMonth = (Number(this.state.month) + monthChange === 12 ? 0 : Number(this.state.month) + monthChange)
+        newYear = newMonth === 0 ? 1 : 0;
+        break;
+    }
+    console.log(Number(this.state.year) + newYear);
     this.setState({
-      date: Moment([this.state.year, this.state.month, dayChange.target.value]),
-      day: dayChange.target.value
+      date: Moment([Number(this.state.year) + newYear, Number(this.state.month) + monthChange, dayChange]),
+      day: dayChange,
+      month: Number(this.state.month) + monthChange,
+      year: Number(this.state.year) + newYear
     })
   }
   render() {
