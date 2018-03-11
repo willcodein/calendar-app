@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
+import PrevMonth from './prevMonth';
+import NextMonth from './nextMonth';
 
-export default class Month extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      month: this.props.month,
-      months: Moment.months()
-    }
-  }
-  handleChange(e) {
-    // this.props.handlerFromParent(e.target.value);
-  }
-  render(){
-    let months = this.state.months.map((month) => {
-      return <option key={ month }>{month}</option>
-    })
-    return (
-      <div>
-        <select value={ this.state.month }  onChange={ this.handleChange }>
-          { months }
-        </select>
-      </div>
-    )
-  }
+const Month = ({ date, handleMonth, monthIncrement }) => {
+  const allMonths = Moment.months();
+  let months = allMonths.map(( month, index ) => {
+    return <option value={ index } key={ month }>{ month }</option>
+  })
+
+  return (
+    <div>
+      <PrevMonth monthIncrement={ monthIncrement } />
+      <select value={ date.format('M') - 1 }  onChange={ handleMonth }>
+        { months }
+      </select>
+      <NextMonth monthIncrement={ monthIncrement } />
+    </div>
+  )
 }
+
+export default Month;
