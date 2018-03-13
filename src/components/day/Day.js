@@ -24,7 +24,7 @@ const Day = ({ date, handleDay }) => {
   for (let i = 1; i <= daysInMonth; i++) {
     days.push(
       <span
-        className={ "calendar__date  " + (date.format('D') == i ? 'active' : 'inactive') }
+        className={ "calendar__date  " + (Number(date.format('D')) === i ? 'active' : 'inactive') }
         onClick={ () => {
           handleDay(i)
         }}
@@ -44,7 +44,6 @@ const Day = ({ date, handleDay }) => {
   daysOfWeek.map((day, index) => {
     return daysHeader.push(<span key={ "dayHeader_" + index } className="calendar__date  calendar__date--header">{ day }</span>)
   })
-  console.log(daysHeader);
   return (
     <div className="calendar__date-container">
       <div>

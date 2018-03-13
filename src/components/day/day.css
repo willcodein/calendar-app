@@ -3,7 +3,6 @@
   width: 14.28%;
   box-sizing: border-box;
   font-size: 12px;
-  transition: 0.3s;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -16,8 +15,9 @@
 
 .calendar__date:hover {
   font-weight: bold;
-  background: #ebebeb;
+  background: rgba(0, 150, 136, 0.3);
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .calendar__date.active {
@@ -28,8 +28,10 @@
 
 .calendar__date-container {
   font-size: 0;
+  margin-top: 30px;
 }
 
 .calendar__date--overflow {
-  color: #7c7d7f;
+  color: #999;
+  background: #efefef;
 }

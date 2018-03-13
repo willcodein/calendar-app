@@ -1,20 +1,27 @@
 .month {
-  position: relative;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .month__prev {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 40px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 40px;
+  color: #a5a5a5;
 }
 
 .month__next {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 40px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 40px;
+  color: #a5a5a5;
 }
 
 .month__selector {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
 }

@@ -4,7 +4,7 @@ const prevMonth = ({ monthIncrement }) => {
   return (
     <div className="month__prev" onClick={ () => {
       monthIncrement( -1 )
-    } }>Prev button</div>
+    } }>&lt;</div>
   )
 }
 

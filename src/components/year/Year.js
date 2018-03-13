@@ -9,8 +9,8 @@ const Year = ({ date, handleYear }) => {
   })
 
   return(
-    <div>
-      <select className="year__selector" value={ date.format('YYYY') }  onChange={ handleYear }>
+    <div className="year__selector">
+      <select value={ date.format('YYYY') }  onChange={ handleYear }>
         { years }
       </select>
     </div>

@@ -9,8 +9,8 @@ const Month = ({ date, handleMonth, monthIncrement }) => {
   let months = allMonths.map(( month, index ) => {
     return <option value={ index } key={ month }>{ month }</option>
   })
-  const hideNext = date.format('YYYY') === "2020" && date.format('MM') == "12";
-  const hidePrev = date.format('YYYY') === "2010" && date.format('MM') == "01";
+  const hideNext = date.format('YYYY') === "2020" && date.format('MM') === "12";
+  const hidePrev = date.format('YYYY') === "2010" && date.format('MM') === "01";
   return (
     <div className="month">
       <select className="month__selector" value={ date.format('M') - 1 }  onChange={ handleMonth }>

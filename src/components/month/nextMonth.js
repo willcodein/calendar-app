@@ -4,7 +4,7 @@ const nextMonth = ({ monthIncrement }) => {
   return (
     <div className="month__next" onClick={ () => {
       monthIncrement( 1 )
-    } }>Next button</div>
+    } }>&gt;</div>
   )
 }
 
