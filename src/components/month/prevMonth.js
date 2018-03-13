@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const prevMonth = ({ monthIncrement }) => {
   return (
-    <div onClick={ () => {
+    <div className="month__prev" onClick={ () => {
       monthIncrement( -1 )
     } }>Prev button</div>
   )

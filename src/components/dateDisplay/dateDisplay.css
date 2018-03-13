@@ -1,0 +1,11 @@
+.date-display {
+  color: #fff;
+  font-size: 28px;
+  line-height: 1.31;
+}
+
+.date-display__year {
+  font-size: 14px;
+  font-weight: lighter;
+  color: #9CD8D3;
+}

@@ -1,0 +1,20 @@
+.month {
+  position: relative;
+}
+
+.month__prev {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.month__next {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.month__selector {
+  display: block;
+  margin: 0 auto;
+}

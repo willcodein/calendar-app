@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
-import './calendar.css';
+import './day.css';
 import { getOverflowDates } from '../../utility.js'
 
 const Day = ({ date, handleDay }) => {
   let days = [];
+  let daysHeader = [];
   let underflows = getOverflowDates(date, 'under');
   let overflows = getOverflowDates(date, 'over');
   let daysInMonth = Moment(date).daysInMonth();
+  let daysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
   underflows.map((day, index) => {
     days.push(
@@ -22,7 +24,7 @@ const Day = ({ date, handleDay }) => {
   for (let i = 1; i <= daysInMonth; i++) {
     days.push(
       <span
-        className={ "calendar__date  " + (date.format('D') == i ? 'active' : null) }
+        className={ "calendar__date  " + (date.format('D') == i ? 'active' : 'inactive') }
         onClick={ () => {
           handleDay(i)
         }}
@@ -39,9 +41,18 @@ const Day = ({ date, handleDay }) => {
         key={ "overflow_" + index }> {day} </span>
     )
   })
+  daysOfWeek.map((day, index) => {
+    return daysHeader.push(<span key={ "dayHeader_" + index } className="calendar__date  calendar__date--header">{ day }</span>)
+  })
+  console.log(daysHeader);
   return (
     <div className="calendar__date-container">
-      { days }
+      <div>
+        { daysHeader }
+      </div>
+      <div>
+        { days }
+      </div>
     </div>
   )
 }

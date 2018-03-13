@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './year.css';
 
 
 const Year = ({ date, handleYear }) => {
@@ -9,7 +10,7 @@ const Year = ({ date, handleYear }) => {
 
   return(
     <div>
-      <select value={ date.format('YYYY') }  onChange={ handleYear }>
+      <select className="year__selector" value={ date.format('YYYY') }  onChange={ handleYear }>
         { years }
       </select>
     </div>

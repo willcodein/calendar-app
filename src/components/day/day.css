@@ -1,20 +1,29 @@
 .calendar__date {
   display: inline-block;
   width: 14.28%;
-  border: 1px solid red;
   box-sizing: border-box;
   font-size: 12px;
-  padding: 20px;
   transition: 0.3s;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.calendar__date--header {
+  color: #9a9a9a;
+  font-size: 8px;
 }
 
 .calendar__date:hover {
-  background: red;
+  font-weight: bold;
+  background: #ebebeb;
   cursor: pointer;
 }
 
 .calendar__date.active {
-    background: green;
+    background: #009688;
+    color: #fff;
+    border-radius: 5px;
 }
 
 .calendar__date-container {
@@ -22,5 +31,5 @@
 }
 
 .calendar__date--overflow {
-  background: blue;
+  color: #7c7d7f;
 }

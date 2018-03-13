@@ -3,8 +3,9 @@ import './App.css';
 import Year from './components/year/Year'
 import Month from './components/month/Month'
 import Day from './components/day/Day'
+import DateDisplay from './components/dateDisplay/DateDisplay'
 import Moment from 'moment';
-import { monthReset } from './utility';
+import { monthChecker } from './utility';
 
 export default class App extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class App extends Component {
     })
   }
   monthIncrement(increment) {
-    let newTime = monthReset(increment, this.state.month);
+    let newTime = monthChecker(increment, this.state.month);
     this.setState({
       date: Moment([Number(this.state.year) + newTime.year, newTime.month, this.state.day]),
       month: newTime.month,
@@ -41,39 +42,28 @@ export default class App extends Component {
     })
   }
   handleDay(dayChange, monthChange = 0) {
-    var newMonth;
-    var newYear = 0;
-    debugger;
-    switch(monthChange) {
-      case -1:
-        newMonth = (Number(this.state.month) + monthChange === -1 ? 11 : Number(this.state.month) + monthChange)
-        newYear = newMonth === 11 ? -1 : 0;
-        break;
-      case 1:
-        newMonth = (Number(this.state.month) + monthChange === 12 ? 0 : Number(this.state.month) + monthChange)
-        newYear = newMonth === 0 ? 1 : 0;
-        break;
-      default:
-        newMonth = 0;
-    }
-    console.log('new year = ' + newYear);
-    console.log('new month = ' + newMonth);
+    let newTime = monthChecker(monthChange, this.state.month);
+    let newYear = Number(this.state.year) + newTime.year < 2021 ? Number(this.state.year) + newTime.year : 2010;
     this.setState({
-      date: Moment([Number(this.state.year) + newYear, newMonth, dayChange]),
+      date: Moment([Number(this.state.year) + newTime.year, newTime.month, dayChange]),
       day: dayChange,
-      month: newMonth,
-      year: Number(this.state.year) + newYear
+      month: newTime.month,
+      year: newYear
     })
   }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Pick a date.</h1>
-        </header>
-        <Month date={ this.state.date }  handleMonth={ this.handleMonth }  monthIncrement={ this.monthIncrement }/>
-        <Year date={ this.state.date }  handleYear={ this.handleYear }/>
-        <Day date={ this.state.date }  handleDay={ this.handleDay }/>
+        <div className="calendar-container">
+          <div className="calendar__display">
+            <DateDisplay date={ this.state.date }/>
+          </div>
+          <div className="calendar__picker">
+            <Month date={ this.state.date }  handleMonth={ this.handleMonth }  monthIncrement={ this.monthIncrement }/>
+            <Year date={ this.state.date }  handleYear={ this.handleYear }/>
+            <Day date={ this.state.date }  handleDay={ this.handleDay }/>
+          </div>
+        </div>
       </div>
     );
   }

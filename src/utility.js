@@ -25,7 +25,7 @@ export function getOverflowDates(date, underOver) {
   return overflow;
 }
 
-export function monthReset(increment, currentMonth) {
+export function monthChecker(increment, currentMonth) {
   var newMonth, newYear;
   switch(increment) {
     case -1:
@@ -36,6 +36,9 @@ export function monthReset(increment, currentMonth) {
       newMonth = (Number(currentMonth) + increment === 12 ? 0 : Number(currentMonth) + increment)
       newYear = newMonth === 0 ? 1 : 0;
       break;
+    default:
+      newMonth = currentMonth;
+      newYear = 0;
   }
   let results = {
     month: newMonth,
