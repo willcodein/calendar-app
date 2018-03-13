@@ -6,6 +6,9 @@
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .calendar__date--header {
@@ -13,7 +16,7 @@
   font-size: 8px;
 }
 
-.calendar__date:hover {
+.calendar__date.selectable:hover {
   font-weight: bold;
   background: rgba(0, 150, 136, 0.3);
   cursor: pointer;

@@ -24,7 +24,7 @@ const Day = ({ date, handleDay }) => {
   for (let i = 1; i <= daysInMonth; i++) {
     days.push(
       <span
-        className={ "calendar__date  " + (Number(date.format('D')) === i ? 'active' : 'inactive') }
+        className={ "calendar__date  " + (Number(date.format('D')) === i ? 'active' : 'selectable') }
         onClick={ () => {
           handleDay(i)
         }}
