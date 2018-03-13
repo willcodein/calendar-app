@@ -47,22 +47,24 @@ export default class Calendar extends Component {
       month: monthChange.target.value
     })
   }
+  handleDay(dayChange, monthChange = 0) {
+    let newTime = monthChecker(monthChange, this.state.month);
+    console.log(Number(this.state.year) + newTime.year);
+    let newYear = Number(this.state.year) + newTime.year < 2021 ? Number(this.state.year) + newTime.year : 2010;
+    console.log(newYear);
+    this.setState({
+      date: Moment([newYear, newTime.month, dayChange]),
+      day: dayChange,
+      month: newTime.month,
+      year: newYear
+    })
+  }
   monthIncrement(increment) {
     let newTime = monthChecker(increment, this.state.month);
     this.setState({
       date: Moment([Number(this.state.year) + newTime.year, newTime.month, this.state.day]),
       month: newTime.month,
       year: Number(this.state.year) + newTime.year
-    })
-  }
-  handleDay(dayChange, monthChange = 0) {
-    let newTime = monthChecker(monthChange, this.state.month);
-    let newYear = Number(this.state.year) + newTime.year < 2021 ? Number(this.state.year) + newTime.year : 2010;
-    this.setState({
-      date: Moment([Number(this.state.year) + newTime.year, newTime.month, dayChange]),
-      day: dayChange,
-      month: newTime.month,
-      year: newYear
     })
   }
   render() {
