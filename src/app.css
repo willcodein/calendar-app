@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-html, body {
-  font-family: 'Roboto', sans-serif;
-}
-
 .calendar-container {
   max-width: 600px;
   display: block;
