@@ -21,7 +21,7 @@ export default class Calendar extends Component {
     this.handleDay = this.handleDay.bind(this);
   }
   componentWillMount() {
-    if(window.sessionStorage.getItem('date')) {
+    if(window.sessionStorage.getItem('year')) {
       this.setState({
         date: Moment([window.sessionStorage.getItem('year'), window.sessionStorage.getItem('month'), window.sessionStorage.getItem('day')]),
         year: window.sessionStorage.getItem('year'),
