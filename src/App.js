@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './app.css';
 import Calendar from './components/calendar/Calendar'
 
 export default class App extends Component {
@@ -8,7 +8,7 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
         <Calendar />
       </div>
     );

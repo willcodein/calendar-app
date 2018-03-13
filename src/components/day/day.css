@@ -37,4 +37,5 @@
 .calendar__date--overflow {
   color: #999;
   background: #efefef;
+  cursor: pointer;
 }
