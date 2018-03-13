@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
 import './calendar.css';
-import { getOverflowDates } from './utility.js'
+import { getOverflowDates } from '../../utility.js'
 
 const Day = ({ date, handleDay }) => {
   let days = [];

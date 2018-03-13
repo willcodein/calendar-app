@@ -11,6 +11,8 @@ const Month = ({ date, handleMonth, monthIncrement }) => {
   const hideNext = date.format('YYYY') === "2020" && date.format('MM') == "12";
   const hidePrev = date.format('YYYY') === "2010" && date.format('MM') == "01";
 
+  console.log(date.format('M'))
+  console.log(date.format('M') - 1)
   return (
     <div>
       { !hidePrev &&

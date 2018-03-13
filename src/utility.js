@@ -24,3 +24,22 @@ export function getOverflowDates(date, underOver) {
   overflow.sort();
   return overflow;
 }
+
+export function monthReset(increment, currentMonth) {
+  var newMonth, newYear;
+  switch(increment) {
+    case -1:
+      newMonth = (Number(currentMonth) + increment === -1 ? 11 : Number(currentMonth) + increment)
+      newYear = newMonth === 11 ? -1 : 0;
+      break;
+    case 1:
+      newMonth = (Number(currentMonth) + increment === 12 ? 0 : Number(currentMonth) + increment)
+      newYear = newMonth === 0 ? 1 : 0;
+      break;
+  }
+  let results = {
+    month: newMonth,
+    year: newYear
+  }
+  return results;
+}

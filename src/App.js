@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Year from './components/year/Year.js'
-import Month from './components/month/Month.js'
-import Day from './components/day/Day.js'
+import Year from './components/year/Year'
+import Month from './components/month/Month'
+import Day from './components/day/Day'
 import Moment from 'moment';
+import { monthReset } from './utility';
 
 export default class App extends Component {
   constructor(props) {
@@ -31,28 +32,18 @@ export default class App extends Component {
       month: monthChange.target.value
     })
   }
-  monthIncrement(e) {
-    var newMonth, newYear;
-    switch(e) {
-      case -1:
-        newMonth = (Number(this.state.month) + e === -1 ? 11 : Number(this.state.month) + e)
-        newYear = newMonth === 11 ? -1 : 0;
-        break;
-      case 1:
-        newMonth = (Number(this.state.month) + e === 12 ? 0 : Number(this.state.month) + e)
-        newYear = newMonth === 0 ? 1 : 0;
-        break;
-    }
+  monthIncrement(increment) {
+    let newTime = monthReset(increment, this.state.month);
     this.setState({
-      date: Moment([Number(this.state.year) + newYear, newMonth, this.state.day]),
-      month: newMonth,
-      year: Number(this.state.year) + newYear
+      date: Moment([Number(this.state.year) + newTime.year, newTime.month, this.state.day]),
+      month: newTime.month,
+      year: Number(this.state.year) + newTime.year
     })
   }
   handleDay(dayChange, monthChange = 0) {
-    console.log(dayChange, monthChange);
     var newMonth;
     var newYear = 0;
+    debugger;
     switch(monthChange) {
       case -1:
         newMonth = (Number(this.state.month) + monthChange === -1 ? 11 : Number(this.state.month) + monthChange)
@@ -62,12 +53,15 @@ export default class App extends Component {
         newMonth = (Number(this.state.month) + monthChange === 12 ? 0 : Number(this.state.month) + monthChange)
         newYear = newMonth === 0 ? 1 : 0;
         break;
+      default:
+        newMonth = 0;
     }
-    console.log(Number(this.state.year) + newYear);
+    console.log('new year = ' + newYear);
+    console.log('new month = ' + newMonth);
     this.setState({
-      date: Moment([Number(this.state.year) + newYear, Number(this.state.month) + monthChange, dayChange]),
+      date: Moment([Number(this.state.year) + newYear, newMonth, dayChange]),
       day: dayChange,
-      month: Number(this.state.month) + monthChange,
+      month: newMonth,
       year: Number(this.state.year) + newYear
     })
   }
