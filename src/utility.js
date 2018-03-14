@@ -25,24 +25,29 @@ export function getOverflowDates(date, underOver) {
   return overflow;
 }
 
-export function monthChecker(increment, currentMonth) {
-  var newMonth, newYear;
+export function monthChecker(increment, currentMonth, day, date) {
+  var newMonth, newYear, newDay;
+  let dateClone = date.clone();
   switch(increment) {
     case -1:
       newMonth = (Number(currentMonth) + increment === -1 ? 11 : Number(currentMonth) + increment)
       newYear = newMonth === 11 ? -1 : 0;
+      newDay = day > dateClone.subtract(1, 'month').daysInMonth() ? -1 : 0;
       break;
     case 1:
       newMonth = (Number(currentMonth) + increment === 12 ? 0 : Number(currentMonth) + increment)
       newYear = newMonth === 0 ? 1 : 0;
+      newDay = day > dateClone.add(1, 'month').daysInMonth() ? -1 : 0;
       break;
     default:
       newMonth = currentMonth;
       newYear = 0;
+      newDay = 0;
   }
   let results = {
     month: newMonth,
-    year: newYear
+    year: newYear,
+    day: Number(day) + newDay
   }
   return results;
 }

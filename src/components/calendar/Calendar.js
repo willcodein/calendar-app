@@ -48,7 +48,7 @@ export default class Calendar extends Component {
     })
   }
   handleDay(dayChange, monthChange = 0) {
-    let newTime = monthChecker(monthChange, this.state.month);
+    let newTime = monthChecker(monthChange, this.state.month, this.state.day, this.state.date);
     let newYear = Number(this.state.year) + newTime.year < 2021 ? Number(this.state.year) + newTime.year : 2010;
     this.setState({
       date: Moment([newYear, newTime.month, dayChange]),
@@ -58,11 +58,14 @@ export default class Calendar extends Component {
     })
   }
   monthIncrement(increment) {
-    let newTime = monthChecker(increment, this.state.month);
+    let newTime = monthChecker(increment, this.state.month, this.state.day, this.state.date);
+    let newDay = newTime.day;
+    let newMonth = newTime.month;
     this.setState({
-      date: Moment([Number(this.state.year) + newTime.year, newTime.month, this.state.day]),
-      month: newTime.month,
-      year: Number(this.state.year) + newTime.year
+      date: Moment([Number(this.state.year) + newTime.year, newMonth, newDay]),
+      month: newMonth,
+      year: Number(this.state.year) + newTime.year,
+      day: newDay
     })
   }
   render() {
