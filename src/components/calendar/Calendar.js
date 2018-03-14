@@ -52,7 +52,7 @@ export default class Calendar extends Component {
   }
   handleDay(dayChange, monthChange = 0) {
     let newTime = monthChecker(monthChange, this.state.month, this.state.day, this.state.date);
-    let newYear = Number(this.state.year) + newTime.year < 2021 ? Number(this.state.year) + newTime.year : 2010;
+    let newYear = Number(this.state.year) + newTime.year === 2021 ? 2010 : Number(this.state.year) + newTime.year === 2009 ? 2020 : Number(this.state.year) + newTime.year;
     this.setState({
       date: Moment([newYear, newTime.month, dayChange]),
       day: dayChange,
