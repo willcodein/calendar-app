@@ -10,6 +10,9 @@
   cursor: pointer;
   font-size: 40px;
   color: #a5a5a5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .month__next {
@@ -19,6 +22,9 @@
   cursor: pointer;
   font-size: 40px;
   color: #a5a5a5;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .month__selector {
