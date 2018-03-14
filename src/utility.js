@@ -26,18 +26,20 @@ export function getOverflowDates(date, underOver) {
 }
 
 export function monthChecker(increment, currentMonth, day, date) {
-  var newMonth, newYear, newDay;
+  var newMonth, newYear, newDay, newDaysInMonth;
   let dateClone = date.clone();
   switch(increment) {
     case -1:
+      newDaysInMonth = dateClone.subtract(1, 'month').daysInMonth();
       newMonth = (Number(currentMonth) + increment === -1 ? 11 : Number(currentMonth) + increment)
       newYear = newMonth === 11 ? -1 : 0;
-      newDay = day > dateClone.subtract(1, 'month').daysInMonth() ? -1 : 0;
+      newDay = day > newDaysInMonth ? (newDaysInMonth - day) : 0;
       break;
     case 1:
+      newDaysInMonth = dateClone.add(1, 'month').daysInMonth();
       newMonth = (Number(currentMonth) + increment === 12 ? 0 : Number(currentMonth) + increment)
       newYear = newMonth === 0 ? 1 : 0;
-      newDay = day > dateClone.add(1, 'month').daysInMonth() ? -1 : 0;
+      newDay = day > newDaysInMonth ? (newDaysInMonth - day) : 0;
       break;
     default:
       newMonth = currentMonth;

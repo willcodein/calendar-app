@@ -42,9 +42,12 @@ export default class Calendar extends Component {
     })
   }
   handleMonth(monthChange) {
+    let daysInMonth = Moment([this.state.year, monthChange.target.value]).daysInMonth();
+    let newDay = this.state.day > daysInMonth ? daysInMonth : this.state.day;
     this.setState({
-      date: Moment([this.state.year, monthChange.target.value, this.state.day]),
-      month: monthChange.target.value
+      date: Moment([this.state.year, monthChange.target.value, newDay]),
+      month: monthChange.target.value,
+      day: newDay
     })
   }
   handleDay(dayChange, monthChange = 0) {
