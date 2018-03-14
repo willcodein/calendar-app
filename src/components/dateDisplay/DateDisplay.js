@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './dateDisplay.css';
 
-
 const DateDisplay = ({ date }) => {
   return(
     <div className="date-display">
